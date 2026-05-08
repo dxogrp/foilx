@@ -31,14 +31,18 @@ distribution, such as a local `texmf` tree.
 \documentclass{foilx}
 
 \title{A Short Talk}
-\author{Ada Lovelace}
+\author{Firstname Lastname}
 \date{\today}
-\info{Example seminar}
+\info{Example Slides}
 
 \begin{document}
 \maketitle
 
-\makesection{Motivation}
+\makesection{First section}
+\begin{itemize}
+  \item First topic
+  \item Second topic
+\end{itemize}
 
 \makefoil{A first foil}
 \begin{itemize}
@@ -110,8 +114,7 @@ pdflatex doc/foilx.tex
 ## Example
 
 A sample deck adapted from the classic FoilTeX sample topics is available at
-`examples/foilx-sample.tex`. It lives in `examples/` because it is executable
-sample material rather than package reference documentation. Compile it from
+`examples/foilx-sample.tex`. Compile it from
 the repository root with:
 
 ```sh
@@ -120,4 +123,4 @@ TEXINPUTS=foilx: pdflatex -output-directory examples examples/foilx-sample.tex
 
 ## License
 
-FoilX is licensed under the Apache License 2.0. See `LICENSE`.
+FoilX is licensed under the Apache License 2.0. See [LICENSE](./LICENSE).
