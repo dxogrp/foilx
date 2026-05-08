@@ -1,0 +1,50 @@
+% page layout
+\newif\if@screen
+\@screenfalse
+\DeclareOption{screen}{\@screentrue}
+\ProcessOptions\relax
+\if@screen
+  \RequirePackage[screen]{geometry}
+\else
+  \RequirePackage[margin=1.5in]{geometry}
+\fi
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% title
+\usepackage{titling}
+\pretitle{\begin{center}\sffamily\bfseries\LARGE}
+
+% authors
+\usepackage{authblk}
+
+% abstract title
+\usepackage{abstract}
+\renewcommand\abstractnamefont{\sffamily\bfseries\large}
+
+% section titles
+\usepackage{sectsty}
+\allsectionsfont{\sffamily}
+
+% bibliography
+\bibliographystyle{alpha}
+
+% array stretch (for structuring optimization problems)
+\renewcommand{\arraystretch}{1.2}
+
+% figure and table titles
+\usepackage{caption}
+\captionsetup{labelsep=space}
+\captionsetup[figure]{width=0.85\textwidth, font=small}
+\captionsetup[table]{width=0.85\textwidth, font=small}
+\renewcommand{\figurename}{\sffamily\bfseries Figure}
+\renewcommand{\tablename}{\sffamily\bfseries Table}
+
+% contents
+\setcounter{tocdepth}{2}
+\usepackage[titles]{tocloft}  % add 'subfigure' to options if using subfigure package
+\renewcommand{\cftsecfont}{\sffamily\bfseries}
+\renewcommand{\cftsecpagefont}{\sffamily\bfseries}
+\renewcommand{\cftsubsecfont}{\sffamily}
+\renewcommand{\cftsubsecpagefont}{\sffamily}
