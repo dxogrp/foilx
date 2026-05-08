@@ -1,0 +1,255 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+
+\geometry{margin=1in}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.75em}
+\setlist{itemsep=0.25em}
+
+\newcommand{\pkg}[1]{\textsf{#1}}
+\newcommand{\cmd}[1]{\texttt{\textbackslash #1}}
+\newcommand{\file}[1]{\texttt{#1}}
+
+\title{\pkg{FoilX} User Manual}
+\author{}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\pkg{FoilX} is a minimal FoilTeX-inspired LaTeX slide class. It is implemented
+as \file{foilx.cls}, loads the standard \file{article} class, and adds a small
+set of commands for writing landscape slide decks with large Computer Modern
+fonts.
+
+This document describes the public interface provided by the current class
+file. It does not describe features that are not implemented by
+\file{foilx.cls}.
+
+\section{Overview}
+
+FoilX is intended for simple lecture or seminar slide decks. The class sets up
+letter-sized landscape pages, a large sans-serif default text face, ragged-right
+paragraphs, slide-friendly list spacing, and a footer that can show the current
+section and page number.
+
+A typical deck uses the following structure:
+
+\begin{itemize}
+  \item \cmd{maketitle} creates the title page.
+  \item \cmd{makesection} creates a numbered section page.
+  \item \cmd{makefoil} creates each content foil.
+  \item \cmd{makeappendix} switches to appendix numbering.
+  \item \cmd{makereference} creates a bibliography page.
+\end{itemize}
+
+\section{Installation}
+
+For a single talk, copy \file{foilx.cls} next to your main \file{.tex} file:
+
+\begin{verbatim}
+my-talk/
+  talk.tex
+  foilx.cls
+\end{verbatim}
+
+Then select the class in the usual way:
+
+\begin{verbatim}
+\documentclass{foilx}
+\end{verbatim}
+
+For regular use, install \file{foilx.cls} in a directory searched by your TeX
+distribution, such as a local \file{texmf} tree. After installation, refresh
+your TeX filename database if your distribution requires it.
+
+\section{Quick Start}
+
+The following complete deck uses the main FoilX commands:
+
+\begin{verbatim}
+\documentclass{foilx}
+
+\title{A Short Talk}
+\author{Ada Lovelace}
+\date{\today}
+\info{Example seminar}
+
+\begin{document}
+\maketitle
+
+\makesection{Motivation}
+
+\makefoil{A first foil}
+\begin{itemize}
+  \item FoilX uses large slide-friendly type.
+  \item Each foil starts on a new landscape page.
+  \item Footers show the current section and page number.
+\end{itemize}
+
+\makefoil{A second foil}
+\[
+  E = mc^2
+\]
+
+\makeappendix
+
+\makefoil{Backup material}
+Appendix foils are numbered A1, A2, and so on.
+\end{document}
+\end{verbatim}
+
+Compile the deck with a standard LaTeX engine:
+
+\begin{verbatim}
+pdflatex talk.tex
+\end{verbatim}
+
+\section{Class Options}
+
+FoilX currently defines one class option:
+
+\begin{description}
+  \item[\texttt{lecture}] Reset page numbering at each section and print foil
+  numbers as \texttt{section--page}, for example \texttt{2--3}. Without this
+  option, normal page numbering is used. Appendix foils use \texttt{A1},
+  \texttt{A2}, and so on in both modes.
+\end{description}
+
+Use the option like this:
+
+\begin{verbatim}
+\documentclass[lecture]{foilx}
+\end{verbatim}
+
+If \file{hyperref} is loaded in lecture mode, FoilX sets
+\texttt{hypertexnames=false} at the beginning of the document. This avoids
+duplicate page anchors when page numbers reset for each section.
+
+\section{Command Reference}
+
+\begin{description}
+  \item[\cmd{info}\texttt{\{text\}}] Store metadata shown in small type on
+  section title pages. Typical values include a course name, seminar name, or
+  event label.
+
+  \item[\cmd{maketitle}] Create the title page using LaTeX's standard
+  \cmd{title}, \cmd{author}, and \cmd{date} values. The title page is numbered
+  internally as page \texttt{0}, so it does not print a normal footer.
+
+  \item[\cmd{makesection}\texttt{\{title\}}] Start a new numbered section on a
+  new page. The section title is remembered for later foil footers. In
+  \texttt{lecture} mode, the page counter is reset to \texttt{1}.
+
+  \item[\cmd{makefoil}\texttt{\{title\}}] Start a content foil on a new page
+  with a centered title. The footer prints the current section title on the left
+  and the page number on the right.
+
+  \item[\cmd{makeappendix}] Start the appendix. FoilX inserts an appendix title
+  page, clears the normal section footer, and numbers later appendix foils as
+  \texttt{A1}, \texttt{A2}, and so on.
+
+  \item[\cmd{makereference}\texttt{[size]\{bib-file\}}] Start a bibliography
+  page using LaTeX's \cmd{bibliography} command and the \texttt{alpha}
+  bibliography style. The optional \texttt{size} argument defaults to
+  \cmd{small}; pass another declaration such as \cmd{footnotesize} if the
+  reference list is long.
+
+  \item[\cmd{vf}] Insert stretchable vertical space using
+  \cmd{vspace*}\texttt{\{\cmd{fill}\}}. This is useful for pushing material
+  toward the bottom of a foil.
+\end{description}
+
+\section{Layout And Typography}
+
+FoilX configures the page as landscape letter paper, with an 11 inch width and
+an 8.5 inch height. It sets the PDF page size to the same dimensions.
+
+The default family is sans serif. Normal body text is set at a large
+slide-oriented size, with larger display sizes available through the standard
+\cmd{large}, \cmd{Large}, \cmd{LARGE}, \cmd{huge}, and \cmd{Huge} declarations.
+Paragraphs are ragged right with no indentation, and lists use wider label
+spacing suitable for projected slides.
+
+The class loads \file{fix-cm}, \file{enumitem}, and \file{graphicx}. You may
+load additional packages in your document preamble as usual.
+
+\section{Appendix And References}
+
+Call \cmd{makeappendix} once before backup slides:
+
+\begin{verbatim}
+\makeappendix
+
+\makefoil{Additional Details}
+This foil is numbered A1.
+\end{verbatim}
+
+For bibliographies, create a normal BibTeX file and call \cmd{makereference}:
+
+\begin{verbatim}
+\makereference{talk}
+\end{verbatim}
+
+This reads entries from \file{talk.bib}. The class selects the \texttt{alpha}
+bibliography style.
+
+\section{Complete Example Deck}
+
+This example shows a small lecture-mode deck with title, sections, foils, and
+appendix material.
+
+\begin{verbatim}
+\documentclass[lecture]{foilx}
+\usepackage{amsmath}
+
+\title{FoilX Demonstration}
+\author{Ada Lovelace \\ Charles Babbage}
+\date{\today}
+\info{Analytical Engines 101}
+
+\begin{document}
+\maketitle
+
+\makesection{A Simple Argument}
+
+\makefoil{The Main Idea}
+\begin{itemize}
+  \item A section page introduces a topic.
+  \item Foils after that section show the section title in the footer.
+  \item In lecture mode, this foil is numbered 1--2.
+\end{itemize}
+
+\makefoil{A Formula}
+\[
+  \sum_{k=1}^{n} k = \frac{n(n+1)}{2}
+\]
+
+\makesection{Another Topic}
+
+\makefoil{A Centered Ending}
+Some slide text can appear near the top.
+
+\vf
+
+This line is pushed toward the bottom.
+
+\makeappendix
+
+\makefoil{Backup}
+Appendix numbering is independent of lecture-mode section numbering.
+\end{document}
+\end{verbatim}
+
+\section{License}
+
+FoilX is distributed under the Apache License 2.0. See the repository
+\file{LICENSE} file for the full license text.
+
+\end{document}

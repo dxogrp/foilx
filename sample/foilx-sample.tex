@@ -1,0 +1,189 @@
+\documentclass[lecture]{foilx}
+
+\usepackage{latexsym}
+
+\title{A Sample FoilX Document}
+\author{FoilX}
+\date{\today}
+\info{Sample deck}
+
+\newcommand{\bs}{\char '134}
+
+\begin{document}
+\maketitle
+
+\makesection{Getting Started}
+
+\makefoil{A First Foil}
+FoilX is a small slide class inspired by FoilTeX.  It keeps the authoring
+model simple: make a title page, start sections, and add foils.
+
+\begin{itemize}
+  \item Use \texttt{\bs makesection\{...\}} for section title pages.
+  \item Use \texttt{\bs makefoil\{...\}} for content foils.
+  \item In \texttt{lecture} mode, page numbers are shown as
+        section--page.
+\end{itemize}
+
+\makefoil{Lists}
+\begin{itemize}
+  \item This is the first level of an itemized list.
+    \begin{itemize}
+      \item Here is the second level.
+        \begin{itemize}
+          \item And here is a third level.
+          \item Nested lists use tighter spacing.
+        \end{itemize}
+      \item Another second-level item.
+    \end{itemize}
+  \item A second first-level item.
+  \item A third first-level item.
+\end{itemize}
+
+\makefoil{Quotes And Enumeration}
+This foil has no special page controls beyond the standard FoilX heading.
+
+\begin{quote}
+\ldots it is a good idea to make your input file easy to read.
+\end{quote}
+
+\begin{enumerate}
+  \item This is an enumerated item.
+  \item This is another enumerated item.
+\end{enumerate}
+
+\begin{center}
+\framebox{\parbox{5.5in}{Use modern commands such as
+\texttt{\bs emph\{new foil\}} rather than old font switches.}}
+\end{center}
+
+\makesection{Text And Symbols}
+
+\makefoil{Fonts}
+\begin{itemize}
+  \item This shows \textrm{\textit{roman italics}}, \textsl{slanted},
+        \textbf{boldface}, \texttt{typewriter}, \textrm{roman},
+        and \textsc{small caps}.
+  \item Unslanted \emph{emphasis} and
+        \textsl{slanted \emph{emphasis}}.
+  \item Size changes: {\tiny tiny}, {\scriptsize scriptsize},
+        {\footnotesize footnotesize}, {\small small},
+        {\normalsize normalsize}, {\large large}, {\Large Large},
+        {\LARGE LARGE}, {\huge huge}, and {\Huge Huge}.
+\end{itemize}
+
+\makefoil{Special Characters And Accents}
+\begin{itemize}
+  \item Accents: \`{o}, \'{o}, \^{o}, \"{o}, \~{o}, \={o}, \.{o},
+        \u{o}, \v{o}, \H{o}, \t{oo}, \c{o}, \d{o}, \b{o}.
+  \item Paragraph symbols: \dag, \ddag, \S, \P, \pounds,
+        0123456789, \copyright.
+  \item Math symbols: $\dag$, $\ddag$, $\S$, $\P$, $\pounds$,
+        $0123456789$.
+  \item Language symbols: \oe, \OE, \ae, \AE, \aa, \AA, \o, \O,
+        \l, \L, \ss, ?`, !`.
+  \item TeX specials: \#, \$, \%, \&, \_, \{, \}.
+\end{itemize}
+
+\makesection{Mathematics}
+
+\makefoil{Displayed Mathematics}
+\[
+{\cal F}\cdots\frac{x+y}{1+\frac{y}{z+1}}
+  = \sqrt{x+y}\times \sqrt[n]{2}
+\]
+
+\[
+\forall\exists\flat\natural\sharp\partial\angle\Re\mho\jmath\aleph
+\]
+
+\[
+\bigcap\bigcup\bigvee\bigwedge\bigodot\bigotimes\bigoplus\biguplus
+\sum\prod\coprod\int\oint
+\]
+
+\[
+\sum_{i=1}^n x_i = \int_0^1 f[x]\,dx.
+\]
+
+\makefoil{Arrays}
+\[
+\begin{array}{clcr}
+a+b+c & uv    & x-y & 27 \\
+a+b   & u+v   & z   & 134 \\
+a     & 3u+vw & xyz & 2,978
+\end{array}
+\]
+
+\[
+x=\left\{ \begin{array}{ll}
+             y   & \mbox{if $y>0$} \\
+             z+y & \mbox{otherwise}
+          \end{array}
+   \right.
+\]
+
+\makefoil{Numbered Equations}
+Here is a numbered equation:
+\begin{equation}
+  E=mc^2
+\end{equation}
+
+And a numbered array:
+\begin{eqnarray}
+ x & = & 17y \\
+ y & > & a+b+c+d+e+f+\nonumber \\
+   &   & k+l+m+n+o+p
+\end{eqnarray}
+
+\makesection{Tables And Figures}
+
+\makefoil{Tables}
+Here is a short table:
+
+\begin{center}
+\begin{tabular}{|l|c|r|} \hline
+First stuff & Second stuff & Third stuff \\ \hline\hline
+foo & bar & bug \\ \hline
+foofoo & barbar & bugbug \\ \hline
+\end{tabular}
+\end{center}
+
+\makefoil{Picture Environments}
+\begin{center}
+\setlength{\unitlength}{.08in}
+\begin{picture}(50,50)(0,0)
+\put(10,35){\framebox(10,10){gnat}}
+\put(30,20){\circle{20}}
+\put(30,20){\vector(0,1){2}}
+\put(45,35){\circle*{5}}
+\put(30,20){\oval(20,30)}
+\end{picture}
+\end{center}
+
+For real graphics, use \texttt{graphicx}, which FoilX loads by default.
+
+\makefoil{Footnotes And Citations}
+A footnote can be placed in slide text.\footnote{This is a footnote.}
+This foil also cites references such as \cite{rocky} and \cite{bullwinkle}.
+
+\begin{thebibliography}{99}
+
+\bibitem{rocky} Rocky and Bullwinkle, Open problems, in
+\textsl{Mr. Know-it-all's Rock Encyclopedia}.
+
+\bibitem{bullwinkle} Bullwinkle, Getting things out of hats,
+\textsl{Annals} \textbf{1} (1990BC), 1--2.
+
+\end{thebibliography}
+
+\makeappendix
+
+\makefoil{Backup Material}
+Appendix foils are numbered A1, A2, and so on.
+
+\vf
+
+The \texttt{\bs vf} helper inserts stretchable vertical space.
+
+\end{document}
