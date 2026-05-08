@@ -3,19 +3,26 @@
 \usepackage{latexsym}
 
 \title{A Sample Foils Document}
-\author{Foils}
+\author{AAAAA}
 \date{\today}
-\info{Sample deck}
+\info{Foils Sample Deck --- AAAAA}
 
 \newcommand{\bs}{\char '134}
 
 \begin{document}
 \maketitle
 
-\makesection{Getting Started}
+\makesection{Getting started}
+\vf
+\begin{itemize}\itemsep=20pt
+  \item a first foil
+  \item lists
+  \item quotes and enumeration
+\end{itemize}
+\vf
 
-\makefoil{A First Foil}
-Foils is a small slide class inspired by FoilTeX.  It keeps the authoring
+\makefoil{A first foil}
+\texttt{foils} is a small slide class inspired by FoilTeX.  It keeps the authoring
 model simple: make a title page, start sections, and add foils.
 
 \begin{itemize}
@@ -40,8 +47,8 @@ model simple: make a title page, start sections, and add foils.
   \item A third first-level item.
 \end{itemize}
 
-\makefoil{Quotes And Enumeration}
-This foil has no special page controls beyond the standard Foils heading style.
+\makefoil{Quotes and enumeration}
+This foil has no special page controls beyond the standard \texttt{foils} heading style.
 
 \begin{quote}
 \ldots it is a good idea to make your input file easy to read.
@@ -57,7 +64,13 @@ This foil has no special page controls beyond the standard Foils heading style.
 \texttt{\bs emph\{new foil\}} rather than old font switches.}}
 \end{center}
 
-\makesection{Text And Symbols}
+\makesection{Text and symbols}
+\vf
+\begin{itemize}\itemsep=20pt
+  \item fonts
+  \item special characters and accents
+\end{itemize}
+\vf
 
 \makefoil{Fonts}
 \begin{itemize}
@@ -72,7 +85,7 @@ This foil has no special page controls beyond the standard Foils heading style.
         {\LARGE LARGE}, {\huge huge}, and {\Huge Huge}.
 \end{itemize}
 
-\makefoil{Special Characters And Accents}
+\makefoil{Special characters and accents}
 \begin{itemize}
   \item Accents: \`{o}, \'{o}, \^{o}, \"{o}, \~{o}, \={o}, \.{o},
         \u{o}, \v{o}, \H{o}, \t{oo}, \c{o}, \d{o}, \b{o}.
@@ -86,8 +99,15 @@ This foil has no special page controls beyond the standard Foils heading style.
 \end{itemize}
 
 \makesection{Mathematics}
+\vf
+\begin{itemize}\itemsep=20pt
+  \item displayed mathematics
+  \item arrays
+  \item numbered equations
+\end{itemize}
+\vf
 
-\makefoil{Displayed Mathematics}
+\makefoil{Displayed mathematics}
 \[
 {\cal F}\cdots\frac{x+y}{1+\frac{y}{z+1}}
   = \sqrt{x+y}\times \sqrt[n]{2}
@@ -123,7 +143,15 @@ x=\left\{ \begin{array}{ll}
    \right.
 \]
 
-\makefoil{Numbered Equations}
+\[
+\begin{array}{ll}
+  \mbox{minimize} & f_0(x)\\
+  \mbox{subject to} & f_i(x) \leq 0, \quad i=1,\ldots,m\\
+                    & h_i(x) = 0, \quad i=1,\ldots,p
+\end{array}
+\]
+
+\makefoil{Numbered equations}
 Here is a numbered equation:
 \begin{equation}
   E=mc^2
@@ -136,7 +164,14 @@ And a numbered array:
    &   & k+l+m+n+o+p
 \end{eqnarray}
 
-\makesection{Tables And Figures}
+\makesection{Tables and figures}
+\vf
+\begin{itemize}\itemsep=20pt
+  \item tables
+  \item picture environments
+  \item footnotes and citations
+\end{itemize}
+\vf
 
 \makefoil{Tables}
 Here is a short table:
@@ -149,7 +184,7 @@ foofoo & barbar & bugbug \\ \hline
 \end{tabular}
 \end{center}
 
-\makefoil{Picture Environments}
+\makefoil{Picture environments}
 \begin{center}
 \setlength{\unitlength}{.08in}
 \begin{picture}(50,50)(0,0)
@@ -161,25 +196,25 @@ foofoo & barbar & bugbug \\ \hline
 \end{picture}
 \end{center}
 
-For real graphics, use \texttt{graphicx}, which the Foils class loads by default.
+For real graphics, use \texttt{graphicx}, which the \texttt{foils} class loads by default.
 
-\makefoil{Footnotes And Citations}
+\makefoil{Footnotes and citations}
 A footnote can be placed in slide text.\footnote{This is a footnote.}
 This foil also cites references such as \cite{rocky} and \cite{bullwinkle}.
 
-\begin{thebibliography}{99}
+\begin{thebibliography}{Bul90}
 
-\bibitem{rocky} Rocky and Bullwinkle, Open problems, in
+\bibitem[RB90]{rocky} Rocky and Bullwinkle, Open problems, in
 \textsl{Mr. Know-it-all's Rock Encyclopedia}.
 
-\bibitem{bullwinkle} Bullwinkle, Getting things out of hats,
+\bibitem[Bul90]{bullwinkle} Bullwinkle, Getting things out of hats,
 \textsl{Annals} \textbf{1} (1990BC), 1--2.
 
 \end{thebibliography}
 
 \makeappendix
 
-\makefoil{Backup Material}
+\makefoil{Backup material}
 Appendix foils are numbered A1, A2, and so on.
 
 \vf
