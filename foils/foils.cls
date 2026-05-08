@@ -1,9 +1,9 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{foilx}[2026/05/06 Minimal slide class]
+\ProvidesClass{foils}[2026/05/06 Minimal slide class]
 
-\newif\iffoilx@lecture
-\newif\iffoilx@appendix
-\DeclareOption{lecture}{\foilx@lecturetrue}
+\newif\iffoils@lecture
+\newif\iffoils@appendix
+\DeclareOption{lecture}{\foils@lecturetrue}
 \ProcessOptions\relax
 
 \RequirePackage{fix-cm}
@@ -39,63 +39,63 @@
   \@colht\textheight}
 
 % FoilTeX font-size names and scaled Computer Modern families.
-\newcommand{\foilx@xxxpt}{29.86}
-\newcommand{\foilx@xxxvipt}{35.83}
-\newcommand{\foilx@xliiipt}{43}
-\newcommand{\foilx@lipt}{51.60}
-\newcommand{\foilx@xii@ipt}{12.1}
-\newcommand{\foilx@xiv@vpt}{14.5}
-\newcommand{\foilx@xvii@iiipt}{17.38}
-\newcommand{\foilx@textsizerange}{%
+\newcommand{\foils@xxxpt}{29.86}
+\newcommand{\foils@xxxvipt}{35.83}
+\newcommand{\foils@xliiipt}{43}
+\newcommand{\foils@lipt}{51.60}
+\newcommand{\foils@xii@ipt}{12.1}
+\newcommand{\foils@xiv@vpt}{14.5}
+\newcommand{\foils@xvii@iiipt}{17.38}
+\newcommand{\foils@textsizerange}{%
   <12><14.4><17.28><20.74><24.88><29.86><35.83><43.00><51.60>}
-\newcommand{\foilx@smallmathrange}{<12.1><14.5><17.38>}
-\newcommand{\foilx@largemathrange}{<20.74><24.88><29.86><35.83><43.00><51.60>}
+\newcommand{\foils@smallmathrange}{<12.1><14.5><17.38>}
+\newcommand{\foils@largemathrange}{<20.74><24.88><29.86><35.83><43.00><51.60>}
 
-\newcommand{\foilx@family}[5]{%
+\newcommand{\foils@family}[5]{%
   \DeclareFontShape{#1}{#2}{#3}{#4}
-    {\foilx@textsizerange #5}{}}
-\newcommand{\foilx@oddfamily}[6]{%
+    {\foils@textsizerange #5}{}}
+\newcommand{\foils@oddfamily}[6]{%
   \DeclareFontShape{#1}{#2}{#3}{#4}
-    {\foilx@smallmathrange #5
-     \foilx@textsizerange #6}{}}
-\newcommand{\foilx@mathfamily}[6]{%
+    {\foils@smallmathrange #5
+     \foils@textsizerange #6}{}}
+\newcommand{\foils@mathfamily}[6]{%
   \DeclareFontShape{#1}{#2}{#3}{#4}
-    {\foilx@smallmathrange #5
-     \foilx@largemathrange #6}{}}
-\newcommand{\foilx@subfamily}[5]{%
+    {\foils@smallmathrange #5
+     \foils@largemathrange #6}{}}
+\newcommand{\foils@subfamily}[5]{%
   \DeclareFontShape{#1}{#2}{#3}{#4}{<->ssub * #5}{}}
 
 \DeclareFontFamily{OT1}{fcmr}{}
-\foilx@oddfamily{OT1}{fcmr}{m}{n}{cmr7}{cmr10}
-\foilx@family{OT1}{fcmr}{m}{it}{cmti10}
-\foilx@family{OT1}{fcmr}{m}{sc}{cmcsc10}
-\foilx@family{OT1}{fcmr}{bx}{n}{cmbx10}
-\foilx@family{OT1}{fcmr}{bx}{sl}{cmbxsl10}
-\foilx@subfamily{OT1}{fcmr}{b}{n}{fcmr/bx/n}
-\foilx@subfamily{OT1}{fcmr}{m}{sl}{fcmss/m/sl}
-\foilx@subfamily{OT1}{fcmr}{bx}{it}{fcmr/bx/sl}
+\foils@oddfamily{OT1}{fcmr}{m}{n}{cmr7}{cmr10}
+\foils@family{OT1}{fcmr}{m}{it}{cmti10}
+\foils@family{OT1}{fcmr}{m}{sc}{cmcsc10}
+\foils@family{OT1}{fcmr}{bx}{n}{cmbx10}
+\foils@family{OT1}{fcmr}{bx}{sl}{cmbxsl10}
+\foils@subfamily{OT1}{fcmr}{b}{n}{fcmr/bx/n}
+\foils@subfamily{OT1}{fcmr}{m}{sl}{fcmss/m/sl}
+\foils@subfamily{OT1}{fcmr}{bx}{it}{fcmr/bx/sl}
 \DeclareFontFamily{OT1}{fcmss}{\fontdimen3\font=1.7\fontdimen3\font}
-\foilx@family{OT1}{fcmss}{m}{n}{cmss10}
-\foilx@family{OT1}{fcmss}{m}{sl}{cmssi10}
-\foilx@family{OT1}{fcmss}{b}{n}{cmssbx10}
-\foilx@family{OT1}{fcmss}{bx}{n}{cmssbx10}
-\foilx@subfamily{OT1}{fcmss}{m}{it}{fcmr/m/it}
-\foilx@family{OT1}{fcmss}{m}{sc}{cmcsc10}
-\foilx@subfamily{OT1}{fcmss}{b}{n}{fcmss/bx/n}
-\foilx@subfamily{OT1}{fcmss}{bx}{it}{fcmr/bx/it}
+\foils@family{OT1}{fcmss}{m}{n}{cmss10}
+\foils@family{OT1}{fcmss}{m}{sl}{cmssi10}
+\foils@family{OT1}{fcmss}{b}{n}{cmssbx10}
+\foils@family{OT1}{fcmss}{bx}{n}{cmssbx10}
+\foils@subfamily{OT1}{fcmss}{m}{it}{fcmr/m/it}
+\foils@family{OT1}{fcmss}{m}{sc}{cmcsc10}
+\foils@subfamily{OT1}{fcmss}{b}{n}{fcmss/bx/n}
+\foils@subfamily{OT1}{fcmss}{bx}{it}{fcmr/bx/it}
 \DeclareFontFamily{OT1}{fcmtt}{\hyphenchar\font\m@ne}
-\foilx@family{OT1}{fcmtt}{m}{n}{cmtt10}
-\foilx@subfamily{OT1}{fcmtt}{bx}{n}{fcmtt/m/n}
+\foils@family{OT1}{fcmtt}{m}{n}{cmtt10}
+\foils@subfamily{OT1}{fcmtt}{bx}{n}{fcmtt/m/n}
 \DeclareFontFamily{OML}{fcmm}{\skewchar\font'177}
-\foilx@mathfamily{OML}{fcmm}{m}{it}{cmmi7}{cmmi10}
-\foilx@mathfamily{OML}{fcmm}{b}{it}{cmmib7}{cmmib10}
-\foilx@subfamily{OML}{fcmm}{bx}{it}{fcmm/b/it}
+\foils@mathfamily{OML}{fcmm}{m}{it}{cmmi7}{cmmi10}
+\foils@mathfamily{OML}{fcmm}{b}{it}{cmmib7}{cmmib10}
+\foils@subfamily{OML}{fcmm}{bx}{it}{fcmm/b/it}
 \DeclareFontFamily{OMS}{fcmsy}{\skewchar\font'60}
-\foilx@mathfamily{OMS}{fcmsy}{m}{n}{cmsy7}{cmsy10}
-\foilx@mathfamily{OMS}{fcmsy}{b}{n}{cmbsy7}{cmbsy10}
-\foilx@subfamily{OMS}{fcmsy}{bx}{n}{fcmsy/b/n}
+\foils@mathfamily{OMS}{fcmsy}{m}{n}{cmsy7}{cmsy10}
+\foils@mathfamily{OMS}{fcmsy}{b}{n}{cmbsy7}{cmbsy10}
+\foils@subfamily{OMS}{fcmsy}{bx}{n}{fcmsy/b/n}
 \DeclareFontFamily{OMX}{fcmex}{}{}
-\foilx@mathfamily{OMX}{fcmex}{m}{n}{cmex7}{cmex10}
+\foils@mathfamily{OMX}{fcmex}{m}{n}{cmex7}{cmex10}
 
 \def\rmdefault{fcmr}
 \def\sfdefault{fcmss}
@@ -127,15 +127,15 @@
 \DeclareRobustCommand*\mit{\@fontswitch{\relax}{\mathnormal}}
 
 % FoilTeX 20pt text sizes, display skips, and list defaults.
-\DeclareMathSizes{\@xiipt}{\foilx@xii@ipt}{\foilx@xii@ipt}{\foilx@xii@ipt}
-\DeclareMathSizes{\@xivpt}{\foilx@xiv@vpt}{\foilx@xii@ipt}{\foilx@xii@ipt}
-\DeclareMathSizes{\@xviipt}{\foilx@xvii@iiipt}{\foilx@xii@ipt}{\foilx@xii@ipt}
-\DeclareMathSizes{\@xxpt}{\@xxpt}{\foilx@xiv@vpt}{\foilx@xii@ipt}
-\DeclareMathSizes{\@xxvpt}{\@xxvpt}{\foilx@xvii@iiipt}{\foilx@xiv@vpt}
-\DeclareMathSizes{\foilx@xxxpt}{\foilx@xxxpt}{\@xxpt}{\foilx@xvii@iiipt}
-\DeclareMathSizes{\foilx@xxxvipt}{\foilx@xxxvipt}{\@xxvpt}{\@xxpt}
-\DeclareMathSizes{\foilx@xliiipt}{\foilx@xliiipt}{\foilx@xxxpt}{\@xxvpt}
-\DeclareMathSizes{\foilx@lipt}{\foilx@lipt}{\foilx@xxxvipt}{\foilx@xxxpt}
+\DeclareMathSizes{\@xiipt}{\foils@xii@ipt}{\foils@xii@ipt}{\foils@xii@ipt}
+\DeclareMathSizes{\@xivpt}{\foils@xiv@vpt}{\foils@xii@ipt}{\foils@xii@ipt}
+\DeclareMathSizes{\@xviipt}{\foils@xvii@iiipt}{\foils@xii@ipt}{\foils@xii@ipt}
+\DeclareMathSizes{\@xxpt}{\@xxpt}{\foils@xiv@vpt}{\foils@xii@ipt}
+\DeclareMathSizes{\@xxvpt}{\@xxvpt}{\foils@xvii@iiipt}{\foils@xiv@vpt}
+\DeclareMathSizes{\foils@xxxpt}{\foils@xxxpt}{\@xxpt}{\foils@xvii@iiipt}
+\DeclareMathSizes{\foils@xxxvipt}{\foils@xxxvipt}{\@xxvpt}{\@xxpt}
+\DeclareMathSizes{\foils@xliiipt}{\foils@xliiipt}{\foils@xxxpt}{\@xxvpt}
+\DeclareMathSizes{\foils@lipt}{\foils@lipt}{\foils@xxxvipt}{\foils@xxxpt}
 
 \setlength\partopsep{2pt plus 1pt minus 1pt}
 \newcommand\@listIa{\leftmargin\leftmargini
@@ -200,10 +200,10 @@
   \let\@listi\@listId}
 \let\tiny\scriptsize
 \renewcommand{\large}{\@setfontsize\large\@xxvpt{32}}
-\renewcommand{\Large}{\@setfontsize\Large\foilx@xxxpt{38}}
-\renewcommand{\LARGE}{\@setfontsize\LARGE\foilx@xxxvipt{45}}
-\renewcommand{\huge}{\@setfontsize\huge\foilx@xliiipt{54}}
-\renewcommand{\Huge}{\@setfontsize\Huge\foilx@lipt{62}}
+\renewcommand{\Large}{\@setfontsize\Large\foils@xxxpt{38}}
+\renewcommand{\LARGE}{\@setfontsize\LARGE\foils@xxxvipt{45}}
+\renewcommand{\huge}{\@setfontsize\huge\foils@xliiipt{54}}
+\renewcommand{\Huge}{\@setfontsize\Huge\foils@lipt{62}}
 \normalsize
 \raggedright
 \sloppy
@@ -252,38 +252,38 @@
 \newcommand{\info}[1]{\renewcommand{\insertinfo}{#1}}
 
 \newcommand{\insertsection}{}
-\newcommand{\foilxsectiontitle}{}
-\newcounter{foilxsection}
-\newcounter{foilxappendixpage}
-\newcommand{\foilxfooterlabel}{%
-  \iffoilx@appendix\else
+\newcommand{\foilssectiontitle}{}
+\newcounter{foilssection}
+\newcounter{foilsappendixpage}
+\newcommand{\foilsfooterlabel}{%
+  \iffoils@appendix\else
     \insertsection
   \fi}
-\newcommand{\foilxpagenumber}{%
-  \iffoilx@appendix
-    A\arabic{foilxappendixpage}%
-  \else\iffoilx@lecture
-    \arabic{foilxsection}--\thepage
+\newcommand{\foilspagenumber}{%
+  \iffoils@appendix
+    A\arabic{foilsappendixpage}%
+  \else\iffoils@lecture
+    \arabic{foilssection}--\thepage
   \else
     \thepage
   \fi\fi}
-\newcommand{\foilx@stepappendixpage}{%
-  \iffoilx@appendix\stepcounter{foilxappendixpage}\fi}
+\newcommand{\foils@stepappendixpage}{%
+  \iffoils@appendix\stepcounter{foilsappendixpage}\fi}
 
-\newcommand{\ps@foilx}{%
+\newcommand{\ps@foils}{%
   \renewcommand{\@oddhead}{\hfil}%
   \renewcommand{\@evenhead}{\@oddhead}%
   \renewcommand{\@oddfoot}{%
     \ifnum\value{page}>0
-      \tiny\foilxfooterlabel\hfil\foilxpagenumber
+      \tiny\foilsfooterlabel\hfil\foilspagenumber
     \else
       \hfil
     \fi}%
   \renewcommand{\@evenfoot}{\@oddfoot}%
 }
-\pagestyle{foilx}
+\pagestyle{foils}
 \AtBeginDocument{%
-  \iffoilx@lecture
+  \iffoils@lecture
     \@ifpackageloaded{hyperref}{%
       \hypersetup{hypertexnames=false}%
     }{}%
@@ -305,15 +305,15 @@
 \setlength{\authorauthorskip}{1cm}
 \setlength{\authordateskip}{2cm}
 
-\newcommand{\foilx@zerolistvertdimens}{%
+\newcommand{\foils@zerolistvertdimens}{%
   \parskip0pt\topsep0pt\partopsep0pt\parsep0pt\itemsep0pt}
 
 \renewcommand{\maketitle}{%
   \begingroup
     \setcounter{page}{0}%
     \renewcommand{\insertsection}{}%
-    \thispagestyle{foilx}%
-    \foilx@zerolistvertdimens
+    \thispagestyle{foils}%
+    \foils@zerolistvertdimens
     \advance\abovetitleskip-\baselineskip
     \null\vskip\abovetitleskip
     \begin{center}
@@ -331,32 +331,32 @@
 
 \newcommand{\makesection}[1]{%
   \clearpage
-  \refstepcounter{foilxsection}%
-  \iffoilx@lecture\setcounter{page}{1}\fi
-  \foilx@stepappendixpage
+  \refstepcounter{foilssection}%
+  \iffoils@lecture\setcounter{page}{1}\fi
+  \foils@stepappendixpage
   \renewcommand{\insertsection}{}%
-  \renewcommand{\foilxsectiontitle}{#1}%
-  \thispagestyle{foilx}%
+  \renewcommand{\foilssectiontitle}{#1}%
+  \thispagestyle{foils}%
   \begin{flushright}\tiny\insertinfo\end{flushright}%
-  \begin{center}\Large\bfseries\arabic{foilxsection}.\ #1\end{center}%
+  \begin{center}\Large\bfseries\arabic{foilssection}.\ #1\end{center}%
 }
 
 \newcommand{\makefoil}[1]{%
   \clearpage
-  \foilx@stepappendixpage
-  \renewcommand{\insertsection}{\foilxsectiontitle}%
-  \thispagestyle{foilx}%
+  \foils@stepappendixpage
+  \renewcommand{\insertsection}{\foilssectiontitle}%
+  \thispagestyle{foils}%
   {\large\bfseries\centering #1\par\null}%
   \vspace{\foilheadskip}%
 }
 
 \newcommand{\makeappendix}{%
   \clearpage
-  \foilx@appendixtrue
-  \setcounter{foilxappendixpage}{0}%
+  \foils@appendixtrue
+  \setcounter{foilsappendixpage}{0}%
   \setcounter{page}{1}%
   \renewcommand{\insertsection}{Appendix}%
-  \renewcommand{\foilxsectiontitle}{Appendix}%
+  \renewcommand{\foilssectiontitle}{Appendix}%
   \thispagestyle{empty}%
   \null\vfil
   \begin{center}\Large\bfseries Appendix\end{center}%

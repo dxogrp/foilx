@@ -1,34 +1,34 @@
-# FoilX
+# `foils`
 
-`foilx` is a minimal FoilTeX-inspired LaTeX slide class. It is built on
+`foils` is a minimal [`FoilTeX`](https://ctan.org/pkg/foiltex)-inspired LaTeX slide class. It is built on
 the standard `article` class and provides a small slide-deck API with
 landscape letter pages, large sans-serif typography, section and foil title
 pages, appendix numbering, and a bibliography helper.
 
 ## Installation
 
-For local use, place `foilx/foilx.cls` where LaTeX can find it. The simplest
+For local use, place `foils/foils.cls` where LaTeX can find it. The simplest
 project layout is:
 
 ```text
 my-talk/
   talk.tex
-  foilx.cls
+  foils.cls
 ```
 
 Then use the class from `talk.tex`:
 
 ```latex
-\documentclass{foilx}
+\documentclass{foils}
 ```
 
-For repeated use, install `foilx.cls` into a directory searched by your TeX
+For repeated use, install `foils.cls` into a directory searched by your TeX
 distribution, such as a local `texmf` tree.
 
 ## Quick Start
 
 ```latex
-\documentclass{foilx}
+\documentclass{foils}
 
 \title{A Short Talk}
 \author{Firstname Lastname}
@@ -46,7 +46,7 @@ distribution, such as a local `texmf` tree.
 
 \makefoil{A first foil}
 \begin{itemize}
-  \item FoilX uses large slide-friendly type.
+  \item The Foils class uses large slide-friendly type.
   \item Each foil starts on a new landscape page.
   \item Footers show the current section and page number.
 \end{itemize}
@@ -73,7 +73,7 @@ pdflatex talk.tex
 
 `lecture`
 : Reset page numbering at each section and print foil numbers as
-  `section--page`, for example `2--3`. When `hyperref` is loaded, FoilX also
+  `section--page`, for example `2--3`. When `hyperref` is loaded, Foils also
   disables duplicate hyperref page anchors for lecture-style numbering.
 
 ## Public Commands
@@ -105,22 +105,22 @@ pdflatex talk.tex
 
 ## Manual
 
-A practical LaTeX manual is available at `doc/foilx.tex`. Compile it with:
+A practical LaTeX manual is available at `doc/foils.tex`. Compile it with:
 
 ```sh
-pdflatex doc/foilx.tex
+cd doc && pdflatex foils.tex
 ```
 
 ## Example
 
 A sample deck adapted from the classic FoilTeX sample topics is available at
-`examples/foilx-sample.tex`. Compile it from
+`sample/foils-sample.tex`. Compile it from
 the repository root with:
 
 ```sh
-TEXINPUTS=foilx: pdflatex -output-directory examples examples/foilx-sample.tex
+TEXINPUTS=foils: pdflatex -output-directory sample sample/foils-sample.tex
 ```
 
 ## License
 
-FoilX is licensed under the Apache License 2.0. See [LICENSE](./LICENSE).
+Foils is licensed under the Apache License 2.0. See [LICENSE](./LICENSE).
