@@ -253,7 +253,6 @@
 
 \newcommand{\insertsection}{}
 \newcommand{\foilssectiontitle}{}
-\newcounter{foilssection}
 \newcounter{foilsappendixpage}
 \newcommand{\foilsfooterlabel}{%
   \iffoils@appendix\else
@@ -263,12 +262,26 @@
   \iffoils@appendix
     A\arabic{foilsappendixpage}%
   \else\iffoils@lecture
-    \arabic{foilssection}--\thepage
+    \arabic{section}--\thepage
   \else
     \thepage
   \fi\fi}
 \newcommand{\foils@stepappendixpage}{%
   \iffoils@appendix\stepcounter{foilsappendixpage}\fi}
+\renewcommand{\section}{\@ifstar\foils@section\foils@section}
+\newcommand{\foils@section}{\@ifnextchar[\foils@section@opt\makesection}
+\newcommand{\foils@section@opt}[2][]{\makesection{#2}}
+\renewcommand{\subsection}{\@ifstar\foils@subsection\foils@subsection}
+\newcommand{\foils@subsection}{\@ifnextchar[\foils@subsection@opt\makefoil}
+\newcommand{\foils@subsection@opt}[2][]{\makefoil{#2}}
+\newcommand{\foils@unsupportedsectioning}[1]{%
+  \ClassError{foils}
+    {\string#1 is not supported}
+    {Foils supports \string\section\space and \string\makesection\space for deck sections, and \string\subsection\space and \string\makefoil\space for foils. Format deeper in-foil headings manually.}%
+}
+\renewcommand{\subsubsection}{\foils@unsupportedsectioning\subsubsection}
+\renewcommand{\paragraph}{\foils@unsupportedsectioning\paragraph}
+\renewcommand{\subparagraph}{\foils@unsupportedsectioning\subparagraph}
 
 \newcommand{\ps@foils}{%
   \renewcommand{\@oddhead}{\hfil}%
@@ -331,14 +344,14 @@
 
 \newcommand{\makesection}[1]{%
   \clearpage
-  \refstepcounter{foilssection}%
+  \refstepcounter{section}%
   \iffoils@lecture\setcounter{page}{1}\fi
   \foils@stepappendixpage
   \renewcommand{\insertsection}{}%
   \renewcommand{\foilssectiontitle}{#1}%
   \thispagestyle{foils}%
   \begin{flushright}\tiny\insertinfo\end{flushright}%
-  \begin{center}\Large\bfseries\arabic{foilssection}.\ #1\end{center}%
+  \begin{center}\Large\bfseries\arabic{section}.\ #1\end{center}%
 }
 
 \newcommand{\makefoil}[1]{%

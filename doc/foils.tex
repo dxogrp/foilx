@@ -111,6 +111,7 @@ Use the option like this:
   \item[\cmd{makesection}\texttt{\{title\}}] Start a new numbered section on a new page.
     The section title is remembered for later foil footers.
     In \texttt{lecture} mode, the page counter is reset to \texttt{1}.
+    The command advances LaTeX's standard \texttt{section} counter, so manual adjustments can use \cmd{setcounter}\texttt{\{section\}\{number\}}.
 
   \item[\cmd{makefoil}\texttt{\{title\}}] Start a content foil on a new page with a centered title.
     The footer prints the current section title on the left and the page number on the right.
@@ -124,6 +125,12 @@ Use the option like this:
   \item[\cmd{vf}] Insert stretchable vertical space using \cmd{vspace*}\texttt{\{\cmd{fill}\}}.
     This is useful for pushing material toward the bottom of a foil.
 \end{description}
+
+For compatibility with standard LaTeX sectioning commands, \cmd{section} is an alias for \cmd{makesection}, and \cmd{subsection} is an alias for \cmd{makefoil}.
+Both aliases accept starred and optional-title forms; the printed title comes from the mandatory argument.
+
+The lower level section commands \cmd{subsubsection}, \cmd{paragraph}, and \cmd{subparagraph} are not supported.
+Format deeper in-foil headings manually.
 
 \section{Layout and typography}
 \pkg{foils} configures the page as landscape letter paper, with an 11 inch width and an 8.5 inch height.

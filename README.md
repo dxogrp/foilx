@@ -86,7 +86,8 @@ pdflatex talk.tex
 
 `\makesection{<title>}`
 : Start a new numbered section. In `lecture` mode, the page counter is reset
-  to `1` for the section.
+  to `1` for the section. This command advances LaTeX's standard `section`
+  counter, so manual adjustments can use `\setcounter{section}{<number>}`.
 
 `\makefoil{<title>}`
 : Start a new foil with a centered title. The footer uses the current section
@@ -102,6 +103,14 @@ pdflatex talk.tex
 
 `\vf`
 : Insert stretchable vertical space with `\vspace*{\fill}`.
+
+For compatibility with standard LaTeX sectioning commands, `\section{<title>}`
+is an alias for `\makesection{<title>}`, and `\subsection{<title>}` is an alias
+for `\makefoil{<title>}`. Both aliases accept starred and optional-title forms;
+the printed title comes from the mandatory argument.
+
+`\subsubsection`, `\paragraph`, and `\subparagraph` are not supported. Format
+deeper in-foil headings manually.
 
 ## Manual
 
