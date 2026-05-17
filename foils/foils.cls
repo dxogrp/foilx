@@ -268,20 +268,63 @@
   \fi\fi}
 \newcommand{\foils@stepappendixpage}{%
   \iffoils@appendix\stepcounter{foilsappendixpage}\fi}
-\renewcommand{\section}{\@ifstar\foils@section\foils@section}
-\newcommand{\foils@section}{\@ifnextchar[\foils@section@opt\makesection}
-\newcommand{\foils@section@opt}[2][]{\makesection{#2}}
-\renewcommand{\subsection}{\@ifstar\foils@subsection\foils@subsection}
-\newcommand{\foils@subsection}{\@ifnextchar[\foils@subsection@opt\makefoil}
-\newcommand{\foils@subsection@opt}[2][]{\makefoil{#2}}
 \newcommand{\foils@unsupportedsectioning}[1]{%
   \ClassError{foils}
     {\string#1 is not supported}
-    {Foils supports \string\section\space and \string\makesection\space for deck sections, and \string\subsection\space and \string\makefoil\space for foils. Format deeper in-foil headings manually.}%
+    {Foils supports \string\makesection\space for deck sections and \string\makefoil\space for foils. Format deeper in-foil headings manually.}%
 }
-\renewcommand{\subsubsection}{\foils@unsupportedsectioning\subsubsection}
-\renewcommand{\paragraph}{\foils@unsupportedsectioning\paragraph}
-\renewcommand{\subparagraph}{\foils@unsupportedsectioning\subparagraph}
+\RenewDocumentCommand{\section}{s o m}{%
+  \foils@unsupportedsectioning\section}
+\RenewDocumentCommand{\subsection}{s o m}{%
+  \foils@unsupportedsectioning\subsection}
+\RenewDocumentCommand{\subsubsection}{s o m}{%
+  \foils@unsupportedsectioning\subsubsection}
+\RenewDocumentCommand{\paragraph}{s o m}{%
+  \foils@unsupportedsectioning\paragraph}
+\RenewDocumentCommand{\subparagraph}{s o m}{%
+  \foils@unsupportedsectioning\subparagraph}
+\newcommand{\foils@unsupportedarticlecommand}[2]{%
+  \ClassError{foils}
+    {\string#1 is not supported}
+    {#2}%
+}
+\newcommand{\foils@unsupportedarticleenvironment}[2]{%
+  \ClassError{foils}
+    {#1 environment is not supported}
+    {#2}%
+}
+\RenewDocumentCommand{\part}{s o m}{%
+  \foils@unsupportedarticlecommand\part
+    {Foils does not support \string\part. Use \string\makesection\space for deck sections.}%
+}
+\RenewDocumentCommand{\tableofcontents}{}{%
+  \foils@unsupportedarticlecommand\tableofcontents
+    {Foils does not provide an article-style table of contents. Use explicit \string\makesection\space and \string\makefoil\space pages instead.}%
+}
+\RenewDocumentCommand{\listoffigures}{}{%
+  \foils@unsupportedarticlecommand\listoffigures
+    {Foils does not provide an article-style list of figures. Keep figure lists as ordinary foils if needed.}%
+}
+\RenewDocumentCommand{\listoftables}{}{%
+  \foils@unsupportedarticlecommand\listoftables
+    {Foils does not provide an article-style list of tables. Keep table lists as ordinary foils if needed.}%
+}
+\RenewDocumentCommand{\thanks}{m}{%
+  \foils@unsupportedarticlecommand\thanks
+    {Foils title pages do not print \string\thanks\space footnotes. Put acknowledgments directly in \string\author\space or on a foil.}%
+}
+\RenewDocumentEnvironment{abstract}{+b}{%
+  \foils@unsupportedarticleenvironment{abstract}
+    {Foils does not provide an article-style abstract. Use an ordinary foil instead.}%
+}{}
+\RenewDocumentEnvironment{titlepage}{+b}{%
+  \foils@unsupportedarticleenvironment{titlepage}
+    {Foils uses \string\maketitle\space for title pages. Use ordinary foils for custom title material.}%
+}{}
+\RenewDocumentEnvironment{theindex}{+b}{%
+  \foils@unsupportedarticleenvironment{theindex}
+    {Foils does not provide an article-style index. Use ordinary foils if an index-like page is needed.}%
+}{}
 
 \newcommand{\ps@foils}{%
   \renewcommand{\@oddhead}{\hfil}%
@@ -374,6 +417,10 @@
   \null\vfil
   \begin{center}\Large\bfseries Appendix\end{center}%
   \vfil\newpage}
+\RenewDocumentCommand{\appendix}{}{%
+  \foils@unsupportedarticlecommand\appendix
+    {Foils does not support article-style \string\appendix. Use \string\makeappendix\space instead.}%
+}
 
 \bibliographystyle{alpha}
 \newcommand{\makereference}[2][\small]{%

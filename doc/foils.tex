@@ -107,6 +107,7 @@ Use the option like this:
 
   \item[\cmd{maketitle}] Create the title page using LaTeX's standard \cmd{title}, \cmd{author}, and \cmd{date} values.
     The title page is numbered internally as page \texttt{0}, so it does not print a normal footer.
+    The article-style \cmd{thanks} command is not supported on title pages.
 
   \item[\cmd{makesection}\texttt{\{title\}}] Start a new numbered section on a new page.
     The section title is remembered for later foil footers.
@@ -126,11 +127,12 @@ Use the option like this:
     This is useful for pushing material toward the bottom of a foil.
 \end{description}
 
-For compatibility with standard LaTeX sectioning commands, \cmd{section} is an alias for \cmd{makesection}, and \cmd{subsection} is an alias for \cmd{makefoil}.
-Both aliases accept starred and optional-title forms; the printed title comes from the mandatory argument.
-
-The lower level section commands \cmd{subsubsection}, \cmd{paragraph}, and \cmd{subparagraph} are not supported.
-Format deeper in-foil headings manually.
+Inherited article commands that do not match the foil model report class errors:
+\begin{center}
+  \cmd{section}, \cmd{subsection}, \cmd{subsubsection}, \cmd{paragraph}, \cmd{subparagraph}, \cmd{part}, \cmd{appendix}, \cmd{tableofcontents}, \cmd{listoffigures}, and \cmd{listoftables}.
+\end{center}
+The article-style \texttt{abstract}, \texttt{titlepage}, and \texttt{theindex} environments are disabled too.
+Use \cmd{makesection}, \cmd{makefoil}, and \cmd{makeappendix} instead.
 
 \section{Layout and typography}
 \pkg{foils} configures the page as landscape letter paper, with an 11 inch width and an 8.5 inch height.

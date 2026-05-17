@@ -83,6 +83,7 @@ pdflatex talk.tex
 
 `\maketitle`
 : Make the deck title page from `\title`, `\author`, and `\date`.
+  The article-style `\thanks` command is not supported.
 
 `\makesection{<title>}`
 : Start a new numbered section. In `lecture` mode, the page counter is reset
@@ -104,13 +105,12 @@ pdflatex talk.tex
 `\vf`
 : Insert stretchable vertical space with `\vspace*{\fill}`.
 
-For compatibility with standard LaTeX sectioning commands, `\section{<title>}`
-is an alias for `\makesection{<title>}`, and `\subsection{<title>}` is an alias
-for `\makefoil{<title>}`. Both aliases accept starred and optional-title forms;
-the printed title comes from the mandatory argument.
-
-`\subsubsection`, `\paragraph`, and `\subparagraph` are not supported. Format
-deeper in-foil headings manually.
+Inherited article commands that do not match the foil model, including
+`\section`, `\subsection`, `\subsubsection`, `\paragraph`, `\subparagraph`,
+`\part`, `\appendix`, `\tableofcontents`, `\listoffigures`, and
+`\listoftables`, report class errors. The article-style `abstract`,
+`titlepage`, and `theindex` environments are disabled too. Use `\makesection`,
+`\makefoil`, and `\makeappendix` instead.
 
 ## Manual
 
