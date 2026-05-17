@@ -100,7 +100,8 @@ pdflatex talk.tex
 
 `\makereference[<size>]{<bib-file>}`
 : Start an unnumbered bibliography page using the `alpha` bibliography style.
-  The optional size defaults to `\small`.
+  The optional size defaults to `\small`. Direct `\bibliography` calls are not
+  supported.
 
 `\vf`
 : Insert stretchable vertical space with `\vspace*{\fill}`.

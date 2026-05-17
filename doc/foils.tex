@@ -120,8 +120,9 @@ Use the option like this:
   \item[\cmd{makeappendix}] Start the appendix.
     \pkg{foils} inserts an appendix title page, clears the normal section footer, and numbers later appendix foils as \texttt{A1}, \texttt{A2}, and so on.
 
-  \item[\cmd{makereference}\texttt{[fontsize]\{bibfile\}}] Start a bibliography page using the LaTeX command \cmd{bibliography} and the \texttt{alpha} bibliography style.
+  \item[\cmd{makereference}\texttt{[fontsize]\{bibfile\}}] Start a bibliography page using the \texttt{alpha} bibliography style.
     The optional \texttt{fontsize} argument defaults to \cmd{small}; pass another declaration such as \cmd{footnotesize} if the reference list is long.
+    Use this command instead of calling \cmd{bibliography} directly.
 
   \item[\cmd{vf}] Insert stretchable vertical space using \cmd{vspace*}\texttt{\{\cmd{fill}\}}.
     This is useful for pushing material toward the bottom of a foil.
@@ -161,6 +162,7 @@ For bibliographies, create a normal BibTeX file and call \cmd{makereference}:
 \end{verbatim}
 This reads entries from \file{refs.bib}.
 The class selects the \texttt{alpha} bibliography style.
+Use \cmd{makereference} rather than calling \cmd{bibliography} directly.
 
 \section{License}
 \pkg{foils} is distributed under the Apache License 2.0.

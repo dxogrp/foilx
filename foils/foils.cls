@@ -422,6 +422,11 @@
     {Foils does not support article-style \string\appendix. Use \string\makeappendix\space instead.}%
 }
 
+\let\foils@bibliography\bibliography
+\RenewDocumentCommand{\bibliography}{m}{%
+  \foils@unsupportedarticlecommand\bibliography
+    {Foils controls bibliography output. Use \string\makereference\space instead.}%
+}
 \bibliographystyle{alpha}
 \newcommand{\makereference}[2][\small]{%
   \clearpage
@@ -429,7 +434,7 @@
   \thispagestyle{empty}%
   \begingroup
     #1%
-    \bibliography{#2}%
+    \foils@bibliography{#2}%
   \endgroup
 }
 \renewenvironment{thebibliography}[1]{%
